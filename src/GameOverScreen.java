@@ -5,7 +5,7 @@ public class GameOverScreen {
 
     public GameOverScreen() {
         JFrame gameOverFrame = new JFrame();
-        final int FRAME_WIDTH = 1980;
+        final int FRAME_WIDTH = 1920;
         final int FRAME_HEIGHT = 1080;
 
         Button restartButton = new Button("Restart", Color.GREEN, new Font(Font.SERIF, Font.PLAIN, 14));
