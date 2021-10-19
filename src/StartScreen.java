@@ -1,4 +1,57 @@
+import java.awt.*;
+import javax.swing.*;
 
+
+/**
+ * This class will allow users to either start or quit the game, or switch to the power up menu
+ * @author blues
+ *
+ */
 public class StartScreen {
-
+	
+	/**
+	 * Constructor that creates a frame with Start, Quit, and Powerup button.
+	 */
+	public StartScreen() {
+		Button startButton = new Button("Start", Color.GREEN, new Font(Font.SERIF, Font.PLAIN, 14));
+		Button powerupButton = new Button("Powerup", Color.CYAN, new Font(Font.SERIF, Font.PLAIN, 14));
+		Button quitButton = new Button("Quit", Color.RED, new Font(Font.SERIF, Font.PLAIN, 14));
+		
+		
+		JFrame startFrame = new JFrame();
+		startFrame.setLayout(new FlowLayout());
+		startFrame.add(startButton.getButton());
+		startFrame.add(powerupButton.getButton());
+		startFrame.add(quitButton.getButton());
+		
+		startFrame.setSize(1980, 1080);;
+		startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		startFrame.setVisible(true);
+	}
+	
+	/**
+	 * Will implement actionListener that will switch to PlayingGameScreen when start button is pressed.
+	 */
+	private void StartGame() {
+		
+	}
+	
+	/**
+	 * Will implement actionListener that will close screen when quit button is pressed.
+	 */
+	private void QuitGame() {
+		
+	}
+	
+	/**
+	 * Will implement action listener that will open PowerupScreen when powerup button is pressed.
+	 */
+	private void PowerupMenu() {
+		
+	}
+	
+	
+	public static void main(String[] args) {
+		StartScreen ss = new StartScreen();
+	}
 }
