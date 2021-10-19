@@ -24,28 +24,28 @@ public class Wall {
 	 * @return xPos 
 	 */
 	public int getxPos() {
-		
+		return 0;
 	}
 	
 	/*
 	 * @return yPos
 	 */
 	public int getyPos() {
-		
+		return 0;
 	}
 	
 	/*
 	 * @return width 
 	 */
 	public int getWidth() {
-		
+		return 0;
 	}
 	
 	/*
 	 * @return height
 	 */
 	public int getHeight() {
-		
+		return 0;
 	}
 }
 
