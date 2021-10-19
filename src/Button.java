@@ -1,6 +1,6 @@
 import java.awt.*;
-
 import javax.swing.*;
+
 /**
  * This class is an outline for all further buttons created for the game. Takes text color and font input.
  * @author blues
