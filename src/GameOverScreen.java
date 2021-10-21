@@ -1,8 +1,15 @@
 import java.awt.*;
 import javax.swing.*;
 
+/**
+ *  This class is for the screen that the user sees when they lose, which lets them retry or quit the game.
+ */
 public class GameOverScreen {
 
+    /**
+     *  Constructor which creates the frame with a Restart and a Quit button, as well as a text area for
+     *  the player's score.
+     */
     public GameOverScreen() {
         JFrame gameOverFrame = new JFrame();
         final int FRAME_WIDTH = 1920;
@@ -26,14 +33,20 @@ public class GameOverScreen {
         gameOverFrame.setVisible(true);
     }
 
+    /**
+     * Method stub for restarting the game, will use the Restart Button to do so
+     */
     private void RestartGame() {
 
     }
 
+    /**
+     * Method stub for quitting the game, will use the Quit Button to do so
+     */
     private void QuitGame() {
 
     }
-
+    
     public static void main(String[] args) {
         GameOverScreen gos = new GameOverScreen();
     }
