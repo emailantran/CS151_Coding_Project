@@ -24,7 +24,10 @@ public class StartScreen {
 		startFrame.add(powerupButton.getButton());
 		startFrame.add(quitButton.getButton());
 		
-		startFrame.setSize(1980, 1080);;
+//		startFrame.setSize(1920, 1080); // don't necessarily need this anymore with setExtendedState
+		startFrame.setExtendedState(JFrame.MAXIMIZED_BOTH); // default stretches out to max resolution
+//		startFrame.setUndecorated(true); // real full screen, have to press alt f4 to get out
+		startFrame.setTitle("Game Title"); // change to whatever title we want for the game
 		startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		startFrame.setVisible(true);
 	}
