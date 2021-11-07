@@ -7,7 +7,7 @@ public class Wall {
 	
 	final int GAP_SIZE = 300;
 	final int FRAME_WIDTH = 1920;
-    final int FRAME_HEIGHT = 1080;
+    	final int FRAME_HEIGHT = 1080;
 	
 	
 	private int xPos;
