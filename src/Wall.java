@@ -10,7 +10,10 @@ public class Wall {
 	 * Constructor for Wall Class
 	 */
 	public Wall(int xPos, int yPos, int width, int height) {
-		
+		this.xPos = xPos;
+		this.yPos = yPos;
+		this.width = width;
+		this.height = height;
 	}
 	
 	/*
@@ -24,14 +27,14 @@ public class Wall {
 	 * @return xPos 
 	 */
 	public int getxPos() {
-		return 0;
+		return xPos;
 	}
 	
 	/*
 	 * @return yPos
 	 */
 	public int getyPos() {
-		return 0;
+		return yPos;
 	}
 	
 	/*
