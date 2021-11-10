@@ -1,6 +1,8 @@
 import javax.swing.*;
 import java.awt.*;
 
+public class PowerupScreen {
+	
 public class PowerupScreen extends JFrame{
     public PowerupScreen() {
         JFrame gameOverFrame = new JFrame();
