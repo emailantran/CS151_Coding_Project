@@ -16,7 +16,16 @@ public class GameOverScreen {
         final int FRAME_HEIGHT = 1080;
 
         Button restartButton = new Button("Restart", Color.GREEN, new Font(Font.SERIF, Font.PLAIN, 14));
+        restartButton.getButton().addActionListener(event -> {
+        	gameOverFrame.dispose();
+        	StartScreen ss = new StartScreen();
+        });
+        
         Button quitButton = new Button("Quit", Color.RED, new Font(Font.SERIF, Font.PLAIN, 14));
+        quitButton.getButton().addActionListener(event -> {
+        	gameOverFrame.dispose();
+        });
+        
         JTextArea scoreArea = new JTextArea();
         scoreArea.setText("Your Final Score: " + 0);
         scoreArea.setEditable(false);
@@ -33,19 +42,19 @@ public class GameOverScreen {
         gameOverFrame.setVisible(true);
     }
 
-    /**
-     * Method stub for restarting the game, will use the Restart Button to do so
-     */
-    private void RestartGame() {
-
-    }
-
-    /**
-     * Method stub for quitting the game, will use the Quit Button to do so
-     */
-    private void QuitGame() {
-
-    }
+//    /**
+//     * Method stub for restarting the game, will use the Restart Button to do so
+//     */
+//    private void RestartGame() {
+//
+//    }
+//
+//    /**
+//     * Method stub for quitting the game, will use the Quit Button to do so
+//     */
+//    private void QuitGame() {
+//
+//    }
     
     public static void main(String[] args) {
         GameOverScreen gos = new GameOverScreen();

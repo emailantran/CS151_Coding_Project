@@ -19,16 +19,11 @@ public class PlayingGameScreen {
 	/**
 	 * Constructor setting up the layout of the playing game screen
 	 */
-	public PlayingGameScreen(PlayerModel player, ArrayList<Wall> obstacles) {
+	public PlayingGameScreen() {
 		/**
 		 * score is set to 0 at beginning of game
 		 */
 		score = 0;
-		
-		/**
-		 * 
-		 */
-		this.obstacles = obstacles;
 		
 		/**
 		 * setting up JFrame
@@ -47,6 +42,9 @@ public class PlayingGameScreen {
          */
         Button quitButton = new Button("Quit", Color.RED, new Font(Font.SERIF, Font.PLAIN, 14));
         playingGameFrame.add(quitButton.getButton(), BorderLayout.SOUTH);
+        quitButton.getButton().addActionListener(event -> {
+        	playingGameFrame.dispose();
+        });
         
         /**
          * text display for score
@@ -57,17 +55,17 @@ public class PlayingGameScreen {
         scoreArea.setAlignmentX(FRAME_WIDTH);
         playingGameFrame.add(scoreArea, BorderLayout.NORTH);
         
-        /**
-         * adding player to the screen
-         */
-        playingGameFrame.add(player, BorderLayout.CENTER);
-        
-        /**
-         * for future addition when wall is implmented
-         */
-//        for (Wall w: obstacles) {
-//        	playingGameFrame.add(w);
-//        }
+//        /**
+//         * adding player to the screen
+//         */
+//        playingGameFrame.add(player, BorderLayout.CENTER);
+//        
+//        /**
+//         * for future addition when wall is implmented
+//         */
+////        for (Wall w: obstacles) {
+////        	playingGameFrame.add(w);
+////        }
         
         playingGameFrame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
         playingGameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -119,10 +117,10 @@ public class PlayingGameScreen {
 	
 	
 	public static void main(String[] args) {
-		PlayerModel player = new PlayerModel(10,100,100,100);
-		ArrayList<Wall> obstacles = new ArrayList<Wall>();
-		Wall w = new Wall(30,30, 20,20);
-		obstacles.add(w);
-		PlayingGameScreen pgs = new PlayingGameScreen(player, obstacles);
+//		PlayerModel player = new PlayerModel(10,100,100,100);
+//		ArrayList<Wall> obstacles = new ArrayList<Wall>();
+//		Wall w = new Wall(30,30, 20,20);
+//		obstacles.add(w);
+		PlayingGameScreen pgs = new PlayingGameScreen();
 	}
 }

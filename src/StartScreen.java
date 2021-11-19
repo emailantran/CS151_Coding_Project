@@ -13,12 +13,22 @@ public class StartScreen {
 	 * Constructor that creates a frame with Start, Quit, and Powerup button.
 	 */
 	public StartScreen() {
+		JFrame startFrame = new JFrame();
 		Button startButton = new Button("Start", Color.GREEN, new Font(Font.SERIF, Font.PLAIN, 14));
 		Button powerupButton = new Button("Powerup", Color.CYAN, new Font(Font.SERIF, Font.PLAIN, 14));
 		Button quitButton = new Button("Quit", Color.RED, new Font(Font.SERIF, Font.PLAIN, 14));
 		
+		startButton.getButton().addActionListener(event -> {
+			startFrame.dispose();
+			PlayingGameScreen pgs = new PlayingGameScreen();
+			});
+		quitButton.getButton().addActionListener(event -> startFrame.dispose());
+		powerupButton.getButton().addActionListener(event -> {
+			startFrame.dispose();
+			PowerupScreen pus = new PowerupScreen();
+		});
 		
-		JFrame startFrame = new JFrame();
+		
 		startFrame.setLayout(new FlowLayout());
 		startFrame.add(startButton.getButton());
 		startFrame.add(powerupButton.getButton());
@@ -32,26 +42,30 @@ public class StartScreen {
 		startFrame.setVisible(true);
 	}
 	
-	/**
-	 * Will implement actionListener that will switch to PlayingGameScreen when start button is pressed.
-	 */
-	private void StartGame() {
-		
-	}
 	
-	/**
-	 * Will implement actionListener that will close screen when quit button is pressed.
+	/*
+	 * Not needed lmao, just using action listeners in the constructor
 	 */
-	private void QuitGame() {
-		
-	}
-	
-	/**
-	 * Will implement action listener that will open PowerupScreen when powerup button is pressed.
-	 */
-	private void PowerupMenu() {
-		
-	}
+//	/**
+//	 * Will implement actionListener that will switch to PlayingGameScreen when start button is pressed.
+//	 */
+//	private void StartGame() {
+//		
+//	}
+//	
+//	/**
+//	 * Will implement actionListener that will close screen when quit button is pressed.
+//	 */
+//	private void QuitGame() {
+//		
+//	}
+//	
+//	/**
+//	 * Will implement action listener that will open PowerupScreen when powerup button is pressed.
+//	 */
+//	private void PowerupMenu() {
+//		
+//	}
 	
 	
 	public static void main(String[] args) {
