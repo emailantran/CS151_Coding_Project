@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class PowerupScreen extends JFrame{
     public PowerupScreen() {
-        JFrame gameOverFrame = new JFrame();
+        JFrame powerUpScreen = new JFrame();
         final int FRAME_WIDTH = 540;
         final int FRAME_HEIGHT = 860;
 
@@ -20,21 +20,21 @@ public class PowerupScreen extends JFrame{
         power4Button.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
         quitButton.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        gameOverFrame.setLayout(new BoxLayout(gameOverFrame.getContentPane(),BoxLayout.Y_AXIS));
+        powerUpScreen.setLayout(new BoxLayout(powerUpScreen.getContentPane(),BoxLayout.Y_AXIS));
 
-        gameOverFrame.add(quitButton.getButton());
-        gameOverFrame.add(Box.createVerticalGlue());
-        gameOverFrame.add(power1Button.getButton());
-        gameOverFrame.add(Box.createVerticalGlue());
-        gameOverFrame.add(power2Button.getButton());
-        gameOverFrame.add(Box.createVerticalGlue());
-        gameOverFrame.add(power3Button.getButton());
-        gameOverFrame.add(Box.createVerticalGlue());
-        gameOverFrame.add(power4Button.getButton());
+        powerUpScreen.add(quitButton.getButton());
+        powerUpScreen.add(Box.createVerticalGlue());
+        powerUpScreen.add(power1Button.getButton());
+        powerUpScreen.add(Box.createVerticalGlue());
+        powerUpScreen.add(power2Button.getButton());
+        powerUpScreen.add(Box.createVerticalGlue());
+        powerUpScreen.add(power3Button.getButton());
+        powerUpScreen.add(Box.createVerticalGlue());
+        powerUpScreen.add(power4Button.getButton());
 
-        gameOverFrame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
-        gameOverFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        gameOverFrame.setVisible(true);
+        powerUpScreen.setSize(FRAME_WIDTH, FRAME_HEIGHT);
+        powerUpScreen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        powerUpScreen.setVisible(true);
     }
 
     /**
