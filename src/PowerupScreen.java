@@ -14,6 +14,43 @@ public class PowerupScreen extends JFrame{
         Button power3Button = new Button("Power 3", Color.GREEN, new Font(Font.SERIF, Font.PLAIN, 75));
         Button power4Button = new Button("Power 4", Color.GREEN, new Font(Font.SERIF, Font.PLAIN, 75));
 
+        quitButton.getButton().addActionListener(event -> {
+            powerUpScreen.dispose();
+            StartScreen ss = new StartScreen();
+        });
+
+        power1Button.getButton().addActionListener(event -> {
+            powerUpScreen.dispose();
+
+            //Add power up functionality
+            
+            StartScreen ss = new StartScreen();
+        });
+
+        power2Button.getButton().addActionListener(event -> {
+            powerUpScreen.dispose();
+
+            //Add power up functionality
+
+            StartScreen ss = new StartScreen();
+        });
+
+        power3Button.getButton().addActionListener(event -> {
+            powerUpScreen.dispose();
+
+            //Add power up functionality
+
+            StartScreen ss = new StartScreen();
+        });
+
+        power4Button.getButton().addActionListener(event -> {
+            powerUpScreen.dispose();
+
+            //Add power up functionality
+
+            StartScreen ss = new StartScreen();
+        });
+
         power1Button.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
         power2Button.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
         power3Button.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
