@@ -7,11 +7,13 @@ import javax.swing.*;
  * @author blues
  *
  */
-public class PlayingGameScreen {
+public class PlayingGameScreen extends JPanel {
 	/**
 	 * obstacles will hold objects of Wall class to display on the game screen
 	 */
 	private ArrayList<Wall> obstacles;
+	
+	public PlayerModel pm = new PlayerModel(230,100,100,100);
 	
 	private int score;
 	
@@ -28,37 +30,60 @@ public class PlayingGameScreen {
 		/**
 		 * setting up JFrame
 		 */
-		JFrame playingGameFrame = new JFrame();
-		final int FRAME_WIDTH = 1920;
-        final int FRAME_HEIGHT = 1080;
+//		JFrame playingGameFrame = new JFrame();
+//		final int FRAME_WIDTH = 1920;
+//        final int FRAME_HEIGHT = 1080;
         
         /**
          * setting up layout of JFrame
          */
-        playingGameFrame.setLayout(new BorderLayout());
+//        playingGameFrame.setLayout(new BorderLayout());
+//        
+//        JPanel dick = new JPanel();
+        	
         
         /**
          * creating instance of quit button
          */
-        Button quitButton = new Button("Quit", Color.RED, new Font(Font.SERIF, Font.PLAIN, 14));
-        playingGameFrame.add(quitButton.getButton(), BorderLayout.SOUTH);
-        quitButton.getButton().addActionListener(event -> {
-        	playingGameFrame.dispose();
-        });
+//        Button quitButton = new Button("Quit", Color.RED, new Font(Font.SERIF, Font.PLAIN, 14));
+////        playingGameFrame.add(quitButton.getButton(), BorderLayout.SOUTH);
+//        dick.add(quitButton.getButton());
+//        playingGameFrame.add(dick, BorderLayout.SOUTH);
+          
+          
+
+//        playingGameFrame.add(quitButton.getButton());
+//        quitButton.getButton().addActionListener(event -> {
+//        	playingGameFrame.dispose();
+//        });
+        
+        
+//        Button Button1 = new Button("Quit", Color.RED, new Font(Font.SERIF, Font.PLAIN, 14));
+//        Button Button2 = new Button("Quit", Color.RED, new Font(Font.SERIF, Font.PLAIN, 14));
+//        playingGameFrame.add(Button1.getButton(), BorderLayout.WEST);
+//        playingGameFrame.add(Button2.getButton(), BorderLayout.WEST);
+
+        
+        
         
         /**
          * text display for score
          */
-        JTextPane scoreArea = new JTextPane();
-        scoreArea.setText("Score: " + score);
-        scoreArea.setEditable(false);
-        scoreArea.setAlignmentX(FRAME_WIDTH);
-        playingGameFrame.add(scoreArea, BorderLayout.NORTH);
+//        JTextPane scoreArea = new JTextPane();
+//        scoreArea.setText("Score: " + score);
+//        scoreArea.setEditable(false);
+//        scoreArea.setAlignmentX(FRAME_WIDTH);
+//        playingGameFrame.add(scoreArea, BorderLayout.NORTH);
+//        playingGameFrame.add(scoreArea);
         
 //        /**
 //         * adding player to the screen
 //         */
-//        playingGameFrame.add(player, BorderLayout.CENTER);
+        
+        
+        
+//        PlayerModel player = new PlayerModel(10, 100, 100, 100);
+//        playingGameFrame.add(player);
 //        
 //        /**
 //         * for future addition when wall is implmented
@@ -67,10 +92,27 @@ public class PlayingGameScreen {
 ////        	playingGameFrame.add(w);
 ////        }
         
-        playingGameFrame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
-        playingGameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        playingGameFrame.setVisible(true);
+//        playingGameFrame.setSize(800, 800);
+//        playingGameFrame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//        playingGameFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        playingGameFrame.setVisible(true);
+//        System.out.println(playingGameFrame.getMaximizedBounds());
+		this.setLayout(new BorderLayout());
+		Button downButton = new Button("Down", Color.BLUE, new Font(Font.SERIF, Font.PLAIN, 14));
+		downButton.getButton().addActionListener(event -> {
+			pm.setyPos(10);
+			this.repaint();
+		});
+		this.add(downButton.getButton(), BorderLayout.NORTH);
+		this.add(new DIFFWALL());
 	}
+	
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		pm.draw(g);
+	}
+	
+	
 	
 	/**
 	 * will use x,y position of player model to detect collision with walls from obstacle instance variable
@@ -121,6 +163,19 @@ public class PlayingGameScreen {
 //		ArrayList<Wall> obstacles = new ArrayList<Wall>();
 //		Wall w = new Wall(30,30, 20,20);
 //		obstacles.add(w);
-		PlayingGameScreen pgs = new PlayingGameScreen();
+		JFrame frame = new JFrame();
+		frame.setLayout(new BorderLayout());
+//		Button downButton = new Button("Down", Color.BLUE, new Font(Font.SERIF, Font.PLAIN, 14));
+//		downButton.getButton().addActionListener(event -> {
+//			pm.setyPos(10);
+//		});
+		//frame.add(downButton.getButton(), BorderLayout.NORTH);
+		//PlayingGameScreen pgs = new PlayingGameScreen();
+		frame.add(new PlayingGameScreen(), BorderLayout.CENTER);
+		frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		//frame.setSize(400,400);
+		frame.setLocationRelativeTo(null);
+		frame.setVisible(true);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 }
