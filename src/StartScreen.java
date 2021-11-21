@@ -41,8 +41,7 @@ public class StartScreen {
 		startFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		startFrame.setVisible(true);
 	}
-	
-	
+
 	/*
 	 * Not needed lmao, just using action listeners in the constructor
 	 */
