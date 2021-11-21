@@ -44,7 +44,7 @@ public class DIFFWALL extends JComponent {
 
         int wallW = 100;
         height = 300;
-        int wallSpeed = -20;
+        int wallSpeed = -5;
 
         xPos = lastX + wallSpeed;
         
