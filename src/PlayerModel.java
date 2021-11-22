@@ -1,7 +1,9 @@
 import java.awt.*;
+import java.awt.geom.Ellipse2D;
+
 import javax.swing.*;
 
-public class PlayerModel extends JPanel{
+public class PlayerModel {
     private int xPos;
     private int yPos;
     private int width;
@@ -19,6 +21,7 @@ public class PlayerModel extends JPanel{
         this.yPos = yPos;
         this.width = width;
         this.height = height;
+        
     }
 
     /**
@@ -57,14 +60,12 @@ public class PlayerModel extends JPanel{
         return height;
     }
 
-    /**
-     * Graphics for the PlayerModel class
-     * @param g
-     */
-    @Override
-    public void paintComponent(Graphics g){
-        super.paintComponent(g);
-        g.fillRect(xPos,yPos,width,height);
+    public void draw(Graphics g){
+        Graphics2D g2d = (Graphics2D) g;
+        Ellipse2D.Double circle = new Ellipse2D.Double(xPos,yPos,100,100);
+        
+        g2d.setColor(Color.yellow);
+        g2d.fill(circle);
     }
 
     }
