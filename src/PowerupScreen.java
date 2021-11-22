@@ -2,9 +2,10 @@ import javax.swing.*;
 import java.awt.*;
 
 
-public class PowerupScreen extends JFrame{
+public class PowerupScreen extends JPanel{
+	
     public PowerupScreen() {
-        JFrame powerUpFrame = new JFrame();
+      
         final int FRAME_WIDTH = 540;
         final int FRAME_HEIGHT = 860;
 
@@ -13,6 +14,38 @@ public class PowerupScreen extends JFrame{
         Button power2Button = new Button("Power 2", Color.GREEN, new Font(Font.SERIF, Font.PLAIN, 75));
         Button power3Button = new Button("Power 3", Color.GREEN, new Font(Font.SERIF, Font.PLAIN, 75));
         Button power4Button = new Button("Power 4", Color.GREEN, new Font(Font.SERIF, Font.PLAIN, 75));
+        
+        quitButton.getButton().addActionListener(event -> {
+            this.setVisible(false);
+        });
+
+        power1Button.getButton().addActionListener(event -> {
+
+            //Add power up functionality
+            
+            StartScreen ss = new StartScreen();
+        });
+
+        power2Button.getButton().addActionListener(event -> {
+
+            //Add power up functionality
+
+            StartScreen ss = new StartScreen();
+        });
+
+        power3Button.getButton().addActionListener(event -> {
+
+            //Add power up functionality
+
+            StartScreen ss = new StartScreen();
+        });
+
+        power4Button.getButton().addActionListener(event -> {
+
+            //Add power up functionality
+
+            StartScreen ss = new StartScreen();
+        });
 
         quitButton.getButton().addActionListener(event -> {
             powerUpFrame.dispose();
@@ -57,21 +90,21 @@ public class PowerupScreen extends JFrame{
         power4Button.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
         quitButton.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        powerUpFrame.setLayout(new BoxLayout(powerUpFrame.getContentPane(),BoxLayout.Y_AXIS));
 
-        powerUpFrame.add(quitButton.getButton());
-        powerUpFrame.add(Box.createVerticalGlue());
-        powerUpFrame.add(power1Button.getButton());
-        powerUpFrame.add(Box.createVerticalGlue());
-        powerUpFrame.add(power2Button.getButton());
-        powerUpFrame.add(Box.createVerticalGlue());
-        powerUpFrame.add(power3Button.getButton());
-        powerUpFrame.add(Box.createVerticalGlue());
-        powerUpFrame.add(power4Button.getButton());
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        powerUpFrame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
-        powerUpFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        powerUpFrame.setVisible(true);
+        this.add(quitButton.getButton());
+        this.add(Box.createVerticalGlue());
+        this.add(power1Button.getButton());
+        this.add(Box.createVerticalGlue());
+        this.add(power2Button.getButton());
+        this.add(Box.createVerticalGlue());
+        this.add(power3Button.getButton());
+        this.add(Box.createVerticalGlue());
+        this.add(power4Button.getButton());
+
+        this.setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
+        this.setVisible(true);
     }
 
     /**
@@ -109,7 +142,4 @@ public class PowerupScreen extends JFrame{
 
     }
 
-    public static void main(String[] args) {
-        PowerupScreen ss = new PowerupScreen();
-    }
 }

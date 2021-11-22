@@ -18,8 +18,6 @@ public class DIFFWALL extends JComponent {
 	private int lastX = 1920;
 	
 	public DIFFWALL() {
-		
-		
         Thread animationThread = new Thread(new Runnable() {
             public void run() {
                 while (true) {
@@ -36,9 +34,6 @@ public class DIFFWALL extends JComponent {
     public void paintComponent(Graphics g) {
         Graphics2D gg = (Graphics2D) g;
 
-        
-        // use a ticks thing?
-        
         int w = getWidth();
         int h = getHeight();
 
