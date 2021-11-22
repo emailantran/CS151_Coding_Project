@@ -5,7 +5,7 @@ import java.awt.*;
 public class PowerupScreen extends JPanel{
 	
     public PowerupScreen() {
-        
+      
         final int FRAME_WIDTH = 540;
         final int FRAME_HEIGHT = 860;
 
@@ -47,11 +47,49 @@ public class PowerupScreen extends JPanel{
             StartScreen ss = new StartScreen();
         });
 
+        quitButton.getButton().addActionListener(event -> {
+            powerUpFrame.dispose();
+            StartScreen ss = new StartScreen();
+        });
+
+        power1Button.getButton().addActionListener(event -> {
+            powerUpFrame.dispose();
+
+            //Add power up functionality
+            
+            StartScreen ss = new StartScreen();
+        });
+
+        power2Button.getButton().addActionListener(event -> {
+            powerUpFrame.dispose();
+
+            //Add power up functionality
+
+            StartScreen ss = new StartScreen();
+        });
+
+        power3Button.getButton().addActionListener(event -> {
+            powerUpFrame.dispose();
+
+            //Add power up functionality
+
+            StartScreen ss = new StartScreen();
+        });
+
+        power4Button.getButton().addActionListener(event -> {
+            powerUpFrame.dispose();
+
+            //Add power up functionality
+
+            StartScreen ss = new StartScreen();
+        });
+
         power1Button.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
         power2Button.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
         power3Button.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
         power4Button.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
         quitButton.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
+
 
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 

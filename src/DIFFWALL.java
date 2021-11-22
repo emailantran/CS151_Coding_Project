@@ -1,8 +1,9 @@
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 public class DIFFWALL extends JComponent {
-	final int GAP_SIZE = 300;
+	final int GAP_SIZE = 250;
 	final int FRAME_WIDTH = 1920;
     final int FRAME_HEIGHT = 1080;
     final int MIN_HEIGHT = 100;
@@ -37,20 +38,28 @@ public class DIFFWALL extends JComponent {
         int h = getHeight();
 
         int wallW = 100;
-        int wallH = 300;
+        height = 300;
         int wallSpeed = -5;
 
-        int x = lastX + wallSpeed;
+        xPos = lastX + wallSpeed;
+        
+        Random rand = new Random();
+    	int randomHeight = rand.nextInt(MAX_HEIGHT) + MIN_HEIGHT; // height range of 100-600
+    	
 
-        if (x < -wallW + 5) { // when x is off the right side of the screen
+        if (xPos < -wallW + 5) { // when x is off the right side of the screen
         	// randomize the wall gap here
-            x = w;	// x resets back to -width -100 to start again
+        	height = randomHeight;
+            xPos = w;	// x resets back to -width -100 to start again
         }
+        
+        
 
         gg.setColor(Color.BLACK);
-        gg.fillRect(x, h/2 + wallH, wallW, wallH); // bottom
-        gg.fillRect(x, 0, wallW, wallH + 300);				// top
+        gg.fillRect(xPos, 0, wallW, height);		// top
+        gg.fillRect(xPos, height + GAP_SIZE, wallW, FRAME_HEIGHT - height); // bottom
+        
 
-        lastX = x;
+        lastX = xPos;
     }
 }
