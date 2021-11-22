@@ -14,10 +14,14 @@ public class StartScreen {
 	 */
 	public StartScreen() {
 		JFrame startFrame = new JFrame();
-		Button startButton = new Button("Start", Color.GREEN, new Font(Font.SERIF, Font.PLAIN, 14));
-		Button powerupButton = new Button("Powerup", Color.CYAN, new Font(Font.SERIF, Font.PLAIN, 14));
-		Button quitButton = new Button("Quit", Color.RED, new Font(Font.SERIF, Font.PLAIN, 14));
-		
+		Button startButton = new Button("   Start   ", Color.GREEN, new Font(Font.SERIF, Font.PLAIN, 150));
+		Button powerupButton = new Button("Powerup", Color.CYAN, new Font(Font.SERIF, Font.PLAIN, 150));
+		Button quitButton = new Button("  Quit  ", Color.RED, new Font(Font.SERIF, Font.PLAIN, 150));
+
+		startButton.getButton().setPreferredSize(new Dimension(50,200));
+		powerupButton.getButton().setPreferredSize(new Dimension(50,200));
+		quitButton.getButton().setPreferredSize(new Dimension(50,200));
+
 		startButton.getButton().addActionListener(event -> {
 			startFrame.dispose();
 			PlayingGameScreen pgs = new PlayingGameScreen();
@@ -27,13 +31,21 @@ public class StartScreen {
 			startFrame.dispose();
 			PowerupScreen pus = new PowerupScreen();
 		});
-		
-		
-		startFrame.setLayout(new FlowLayout());
-		startFrame.add(startButton.getButton());
+
+		startButton.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
+		powerupButton.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
+		quitButton.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
+
+		startFrame.setLayout(new BoxLayout(startFrame.getContentPane(),BoxLayout.Y_AXIS));
+		//startFrame.add(Box.createVerticalGlue());
 		startFrame.add(powerupButton.getButton());
+		startFrame.add(Box.createVerticalGlue());
+		startFrame.add(startButton.getButton());
+		startFrame.add(Box.createVerticalGlue());
 		startFrame.add(quitButton.getButton());
-		
+		//startFrame.add(Box.createVerticalGlue());
+
+
 //		startFrame.setSize(1920, 1080); // don't necessarily need this anymore with setExtendedState
 		startFrame.setExtendedState(JFrame.MAXIMIZED_BOTH); // default stretches out to max resolution
 //		startFrame.setUndecorated(true); // real full screen, have to press alt f4 to get out
