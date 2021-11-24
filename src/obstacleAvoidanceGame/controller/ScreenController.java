@@ -1,3 +1,10 @@
+package obstacleAvoidanceGame.controller;
+
+import obstacleAvoidanceGame.Message;
+
+import obstacleAvoidanceGame.model.PlayerModel;
+import obstacleAvoidanceGame.model.Wall;
+
 import java.util.concurrent.BlockingQueue;
 
 /**
@@ -12,7 +19,7 @@ public class ScreenController {
     Wall wall;
 
     // constructor that initializes all the view and model classes for the controller to work with
-   /* public ScreenController(BlockingQueue<> queue, View view, PlayerModel playerModel, Wall wall) {
+   /* public Controller.ScreenController(BlockingQueue<> queue, View view, PlayerModel playerModel, Wall wall) {
         this.queue = queue;
         //this.view = view;
         this.playerModel = playerModel;

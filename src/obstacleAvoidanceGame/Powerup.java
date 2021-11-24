@@ -1,3 +1,5 @@
+package obstacleAvoidanceGame;
+
 /**
  *  This is an abstract class that every different powerup will have to extend from.
  */

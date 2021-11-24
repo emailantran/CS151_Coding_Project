@@ -1,3 +1,7 @@
+package obstacleAvoidanceGame.view;
+
+import obstacleAvoidanceGame.Button;
+
 import java.awt.*;
 import javax.swing.*;
 
@@ -51,7 +55,7 @@ public class StartScreen extends JFrame{
 		powerupButton.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
 		quitButton.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
 
-		this.setLayout(new BoxLayout(startFrame.getContentPane(),BoxLayout.Y_AXIS));
+		this.setLayout(new BoxLayout(this.getContentPane(),BoxLayout.Y_AXIS));
 		//startFrame.add(Box.createVerticalGlue());
 		this.add(powerupButton.getButton());
 		this.add(Box.createVerticalGlue());

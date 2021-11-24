@@ -1,3 +1,7 @@
+package obstacleAvoidanceGame.view;
+
+import obstacleAvoidanceGame.Button;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -48,12 +52,12 @@ public class PowerupScreen extends JPanel{
         });
 
         quitButton.getButton().addActionListener(event -> {
-            powerUpFrame.dispose();
+            //powerUpFrame.dispose();
             StartScreen ss = new StartScreen();
         });
 
         power1Button.getButton().addActionListener(event -> {
-            powerUpFrame.dispose();
+            //powerUpFrame.dispose();
 
             //Add power up functionality
             
@@ -61,7 +65,7 @@ public class PowerupScreen extends JPanel{
         });
 
         power2Button.getButton().addActionListener(event -> {
-            powerUpFrame.dispose();
+            //powerUpFrame.dispose();
 
             //Add power up functionality
 
@@ -69,7 +73,7 @@ public class PowerupScreen extends JPanel{
         });
 
         power3Button.getButton().addActionListener(event -> {
-            powerUpFrame.dispose();
+            //powerUpFrame.dispose();
 
             //Add power up functionality
 
@@ -77,7 +81,7 @@ public class PowerupScreen extends JPanel{
         });
 
         power4Button.getButton().addActionListener(event -> {
-            powerUpFrame.dispose();
+            //powerUpFrame.dispose();
 
             //Add power up functionality
 
@@ -108,7 +112,7 @@ public class PowerupScreen extends JPanel{
     }
 
     /**
-     * Will implement actionListener that will switch to StartScreen when quit button is pressed.
+     * Will implement actionListener that will switch to View.StartScreen when quit button is pressed.
      */
     private void QuitMenu() {
 

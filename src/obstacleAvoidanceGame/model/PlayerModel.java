@@ -1,7 +1,7 @@
+package obstacleAvoidanceGame.model;
+
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
-
-import javax.swing.*;
 
 public class PlayerModel {
     private int xPos;
