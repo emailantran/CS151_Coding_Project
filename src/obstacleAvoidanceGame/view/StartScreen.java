@@ -1,3 +1,7 @@
+package obstacleAvoidanceGame.view;
+
+import obstacleAvoidanceGame.Button;
+
 import java.awt.*;
 import javax.swing.*;
 

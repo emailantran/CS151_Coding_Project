@@ -1,9 +1,15 @@
+package obstacleAvoidanceGame.view;
+
+import obstacleAvoidanceGame.model.DIFFWALL;
+import obstacleAvoidanceGame.model.Wall;
+import obstacleAvoidanceGame.model.PlayerModel;
+
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.util.*;
 import javax.swing.*;
+
 
 /**
  * PlayingGame Screen will allow the player to play the game. The screen will contain the playing area, a quit button, and the score of the player.
@@ -12,7 +18,7 @@ import javax.swing.*;
  */
 public class PlayingGameScreen extends JPanel {
 	/**
-	 * obstacles will hold objects of Wall class to display on the game screen
+	 * obstacles will hold objects of Model.Wall class to display on the game screen
 	 */
 	private ArrayList<Wall> obstacles;
 	

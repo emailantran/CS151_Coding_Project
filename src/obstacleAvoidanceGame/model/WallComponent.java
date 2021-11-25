@@ -1,3 +1,7 @@
+package obstacleAvoidanceGame.model;
+
+import obstacleAvoidanceGame.model.Wall;
+
 import java.awt.*;
 import java.util.Random;
 import javax.swing.*;
