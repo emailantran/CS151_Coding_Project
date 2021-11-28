@@ -1,31 +1,43 @@
 package obstacleAvoidanceGame.model;
 
-import obstacleAvoidanceGame.model.Wall;
-
 import java.awt.*;
-import java.util.Random;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 import javax.swing.*;
 
 public class WallComponent extends JComponent {
-	private Wall wall;
-	final int FRAME_WIDTH = 1920;
-    final int FRAME_HEIGHT = 1080;
-    final int MIN_HEIGHT = 100;
-    final int MAX_HEIGHT = 500;
-    final int WIDTH = 100;
+	private ArrayList<Wall> walls = new ArrayList<>();
+	Timer timer;
+	public final static int DISTANCE_APART = 600;
 	
 	public WallComponent() {
-		Random rand = new Random();
-		int randomHeight = rand.nextInt(MAX_HEIGHT) + MIN_HEIGHT; // minimum height of 100, max height
-		wall = new Wall(FRAME_WIDTH, 0, WIDTH, randomHeight); // test values only
+		for (int i = 0; i < 1000; i++) {
+			walls.add(new Wall(i * DISTANCE_APART));
+		}
+		
+		timer = new Timer(40, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                for (Wall n : walls) {
+                    n.move();
+                }
+                repaint();
+            }
+        });
+        
+        timer.start();
 	}
 	
 	public void paintComponent(Graphics g) {
-		Graphics2D g2 = (Graphics2D) g;
-		wall.draw(g2);
-		wall.translate(wall.SPEED);
-		if (wall.getxPos() >= -wall.getWidth()) { 
-			repaint();
-		}
-	}
+        super.paintComponent(g);
+//        pm.draw(g);
+        Graphics2D g2 = (Graphics2D)g;
+        for (Wall n : walls) {
+        	g2.setColor(Color.GREEN);
+	        g2.fillRect(n.getX(), n.getY(), n.getWidth(), n.getHeight());
+	        g2.fillRect(n.getX(), n.getHeight() + n.GAP_SIZE, n.getWidth(), n.FRAME_HEIGHT - n.getHeight()); // bottom
+        }
+    }
 }
