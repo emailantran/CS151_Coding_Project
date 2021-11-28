@@ -5,6 +5,7 @@ public class PlayerModel {
     private int yPos;
     private int width;
     private int height;
+    private int score;
 
     /**
      * Constructor for the PlayerModel class
@@ -13,11 +14,12 @@ public class PlayerModel {
      * @param width Width of the Player Model
      * @param height Height of the Player Model
      */
-    public PlayerModel (int xPos, int yPos, int width, int height) {
+    public PlayerModel (int xPos, int yPos, int width, int height, int score) {
         this.xPos = xPos;
         this.yPos = yPos;
         this.width = width;
         this.height = height;
+        this.score = score;
         
     }
 
@@ -57,4 +59,11 @@ public class PlayerModel {
         return height;
     }
 
+    public void increaseScore(){
+        score =+ 1;
+    }
+
+    public int getScore(){
+        return score;
+    }
     }
