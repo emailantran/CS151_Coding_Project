@@ -21,7 +21,7 @@ public class Wall {
 		x = FRAME_WIDTH + distanceApart;
 		y = 0;
 		width = 100;
-		speed = 10;
+		speed = 4;
 		height = rand.nextInt(MAX_HEIGHT) + MIN_HEIGHT; // minimum height of 100, max height
 	}
 

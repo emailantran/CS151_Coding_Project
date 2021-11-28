@@ -1,26 +1,38 @@
 package obstacleAvoidanceGame.model;
 
 public class PlayerModel {
-    private int xPos;
+	private int xPos;
     private int yPos;
     private int width;
     private int height;
     private int score;
+    
+    // part of Singleton Pattern
+    private static PlayerModel pm = new PlayerModel(230,100,100,100,10);
+    
+    
 
     /**
-     * Constructor for the PlayerModel class
+     * Private Constructor for the PlayerModel class (part of Singleton Pattern)
      * @param xPos X position for the Player Model
      * @param yPos Y position for the Player Model
      * @param width Width of the Player Model
      * @param height Height of the Player Model
      */
-    public PlayerModel (int xPos, int yPos, int width, int height, int score) {
+    private PlayerModel (int xPos, int yPos, int width, int height, int score) {
         this.xPos = xPos;
         this.yPos = yPos;
         this.width = width;
         this.height = height;
         this.score = score;
         
+    }
+    
+    /**
+     * Returns the already constructed PlayerModel (part of Singleton Pattern)
+     */
+    public static PlayerModel getPM() {
+    	return pm;
     }
 
     /**

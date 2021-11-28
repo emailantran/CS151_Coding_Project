@@ -63,7 +63,7 @@ public class PlayingGameScreen extends JPanel {
 		instructions.setEditable(false);
 		instructions.setAlignmentX(FRAME_WIDTH);
 
-		timer = new Timer(40, ae -> {
+		timer = new Timer(10, ae -> {
 			try {
 				this.queue.put(new UpdateWallMessage());
 				this.queue.put(new CollisionCheckMessage());
