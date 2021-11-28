@@ -1,8 +1,5 @@
 package obstacleAvoidanceGame.model;
 
-import java.awt.*;
-import java.awt.geom.Ellipse2D;
-
 public class PlayerModel {
     private int xPos;
     private int yPos;
@@ -58,14 +55,6 @@ public class PlayerModel {
      */
     public int getHeight() {
         return height;
-    }
-
-    public void draw(Graphics g){
-        Graphics2D g2d = (Graphics2D) g;
-        Ellipse2D.Double circle = new Ellipse2D.Double(xPos,yPos,100,100);
-        
-        g2d.setColor(Color.yellow);
-        g2d.fill(circle);
     }
 
     }

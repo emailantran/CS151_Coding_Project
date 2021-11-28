@@ -1,4 +1,4 @@
-package obstacleAvoidanceGame;
+package obstacleAvoidanceGame.message;
 
 import java.io.Serializable;
 
