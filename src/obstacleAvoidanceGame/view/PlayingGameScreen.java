@@ -1,15 +1,13 @@
 package obstacleAvoidanceGame.view;
 
-import obstacleAvoidanceGame.model.DIFFWALL;
-import obstacleAvoidanceGame.model.Wall;
 import obstacleAvoidanceGame.model.PlayerModel;
+import obstacleAvoidanceGame.model.WallComponent;
 
 import java.awt.*;
+import java.awt.event.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.*;
 import javax.swing.*;
-
 
 /**
  * PlayingGame Screen will allow the player to play the game. The screen will contain the playing area, a quit button, and the score of the player.
@@ -17,15 +15,14 @@ import javax.swing.*;
  *
  */
 public class PlayingGameScreen extends JPanel {
-	/**
-	 * obstacles will hold objects of Model.Wall class to display on the game screen
-	 */
-	private ArrayList<Wall> obstacles;
 	
 	public PlayerModel pm = new PlayerModel(230,100,100,100);
+	public PlayerModel pm2 = new PlayerModel(100, 100, 100, 100);
 	
 	private int score;
 	
+	final int FRAME_WIDTH = 1920;
+    final int FRAME_HEIGHT = 1080;
 	
 	/**
 	 * Constructor setting up the layout of the playing game screen
@@ -41,8 +38,7 @@ public class PlayingGameScreen extends JPanel {
 		 * setting up JFrame
 		 */
 //		JFrame playingGameFrame = new JFrame();
-		final int FRAME_WIDTH = 1920;
-        final int FRAME_HEIGHT = 1080;
+		
         
 		this.setLayout(new BorderLayout());
         
@@ -65,11 +61,6 @@ public class PlayingGameScreen extends JPanel {
         this.add(instructions, BorderLayout.SOUTH);
         
     
-        
-        
-        
-
-       
 		
 		this.setFocusable(true);
 		addKeyListener(new KeyAdapter() {
@@ -99,17 +90,15 @@ public class PlayingGameScreen extends JPanel {
 			}
 			
 		});
-
-		DIFFWALL wall = new DIFFWALL();
-		this.add(wall, BorderLayout.CENTER);
-		
-		
+			
+		this.add(new WallComponent()); // adds all the walls to the screen
 		this.setPreferredSize(new Dimension(1920,1080));
 	}
 	
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		pm.draw(g);
+		
 	}
 	
 	
@@ -135,8 +124,6 @@ public class PlayingGameScreen extends JPanel {
 	public int getScore() {
 		return score;
 	}
-	
-	
 	
 	
 	public static void main(String[] args) {
