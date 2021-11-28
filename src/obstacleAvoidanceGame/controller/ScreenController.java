@@ -103,10 +103,19 @@ public class ScreenController {
                 for (int i = 0; i < walls.size(); i++) {
                     if ((walls.get(i).getX() > 230 && walls.get(i).getX() < 330) || (walls.get(i).getX() + 100 > 230 && walls.get(i).getX() + 100 < 331)) {
                         if (walls.get(i).getHeight() > playerModel.getyPos() - 20 || (walls.get(i).getHeight() + walls.get(i).getGAP_SIZE()) < playerModel.getyPos() + 80) {
-                            screenView.quitGame();
-
+                            screenView.goToGameOverScreen();
+                            screenView.stopTimer();
                         }
                     }
+                }
+            } else if (message.getClass() == ScoreCheckMessage.class){
+                int count = 0;
+                for (int i = 0; i < walls.size(); i++) {
+                    if (walls.get(i).getX() < 330) {
+                        count++;
+                    }
+                    playerModel.setScore(count);
+                    screenView.updateScore(playerModel.getScore());
                 }
             }
         }

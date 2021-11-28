@@ -20,6 +20,7 @@ public class PlayingGameScreen extends JPanel {
 	BlockingQueue<Message> queue;
 
 	Timer timer;
+	Timer scoreTimer;
 
 	int playerX;
 	int playerY;
@@ -30,6 +31,7 @@ public class PlayingGameScreen extends JPanel {
 
 	final int FRAME_WIDTH = 1920;
 	final int FRAME_HEIGHT = 1080;
+	JTextPane scoreArea = new JTextPane();
 
 	/**
 	 * Constructor setting up the layout of the playing game screen
@@ -51,7 +53,7 @@ public class PlayingGameScreen extends JPanel {
 		/**
 		 * text display for score
 		 */
-		JTextPane scoreArea = new JTextPane();
+		//JTextPane scoreArea = new JTextPane();
 		scoreArea.setText("Score: " + score);
 		scoreArea.setEditable(false);
 		scoreArea.setAlignmentX(FRAME_WIDTH);
@@ -72,7 +74,16 @@ public class PlayingGameScreen extends JPanel {
 
 		timer.start();
 
-		
+		scoreTimer = new Timer(200, ae -> {
+			try {
+				this.queue.put(new ScoreCheckMessage());
+			} catch (InterruptedException exception) {
+				//nothing
+			}
+		});
+
+		scoreTimer.start();
+
 		addKeyListener(new KeyAdapter() {
 
 			@Override
@@ -106,6 +117,16 @@ public class PlayingGameScreen extends JPanel {
 		this.playerY = y;
 	}
 
+	public void updateScore(int score){
+		this.score = score;
+		scoreArea.setText("Score: " + score);
+	}
+
+	public void stopTimer(){
+		timer.stop();
+		scoreTimer.stop();
+	}
+
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 
@@ -115,23 +136,5 @@ public class PlayingGameScreen extends JPanel {
 		g2d.setColor(Color.yellow);
 		g2d.fill(circle);
 	}
-
-
-	/**
-	 * will use x,y position of player model to detect collision with walls from obstacle instance variable
-	 *
-	 * @return returns true if x,y position coincides with x,y position of wall, false otherwise
-	 */
-	/*public boolean collisionDetected(PlayerModel player) {
-		for (Wall w: obstacles) {
-			System.out.println(player.getxPos() + " " + player.getyPos());
-			if (player.getxPos() == w.getxPos() && player.getyPos() == w.getyPos()) {
-				System.out.println(w.getxPos() + " " + w.getyPos());
-				return true;
-			}
-		}
-		return false;
-	}*/
-
 }
 

@@ -1,49 +1,76 @@
 package obstacleAvoidanceGame.view;
 
 import obstacleAvoidanceGame.Button;
+import obstacleAvoidanceGame.message.Message;
+import obstacleAvoidanceGame.message.QuitGameMessage;
+import obstacleAvoidanceGame.message.QuitPowerupScreenMessage;
+import obstacleAvoidanceGame.message.RestartGameScreenMessage;
 
 import java.awt.*;
+import java.util.concurrent.BlockingQueue;
 import javax.swing.*;
 
 /**
  *  This class is for the screen that the user sees when they lose, which lets them retry or quit the game.
  */
-public class GameOverScreen {
+public class GameOverScreen extends JPanel{
+
+    BlockingQueue<Message> queue;
+
+    Button restartButton;
+    Button quitButton;
+
+    private int score;
 
     /**
      *  Constructor which creates the frame with a Restart and a Quit button, as well as a text area for
      *  the player's score.
      */
-    public GameOverScreen() {
-        JFrame gameOverFrame = new JFrame();
-        final int FRAME_WIDTH = 1920;
-        final int FRAME_HEIGHT = 1080;
+    public GameOverScreen(BlockingQueue<Message> queue) {
+        this.queue = queue;
+        this.score = 0;
 
-        Button restartButton = new Button("Restart", Color.GREEN, new Font(Font.SERIF, Font.PLAIN, 14));
-        restartButton.getButton().addActionListener(event -> {
-        	gameOverFrame.dispose();
-        	//StartScreen ss = new StartScreen();
-        });
-        
-        Button quitButton = new Button("Quit", Color.RED, new Font(Font.SERIF, Font.PLAIN, 14));
-        quitButton.getButton().addActionListener(event -> {
-        	gameOverFrame.dispose();
-        });
-        
-        JTextArea scoreArea = new JTextArea();
-        scoreArea.setText("Your Final Score: " + 0);
+        this.restartButton = new Button("Restart", Color.GREEN, new Font(Font.SERIF, Font.PLAIN, 14));
+        this.restartButton.getButton().setPreferredSize(new Dimension(50, 200));
+        this.restartButton.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
+        this.quitButton = new Button("Quit", Color.RED, new Font(Font.SERIF, Font.PLAIN, 14));
+        this.quitButton.getButton().setPreferredSize(new Dimension(50, 200));
+        this.quitButton.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
+
+
+        this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+
+        JTextPane scoreArea = new JTextPane();
+        scoreArea.setText("Score: " + score);
         scoreArea.setEditable(false);
+        scoreArea.setAlignmentX(Component.CENTER_ALIGNMENT);
 
-        gameOverFrame.setLayout(new FlowLayout());
+        this.add(restartButton.getButton());
+        this.add(Box.createVerticalGlue());
+        this.add(scoreArea);
+        this.add(Box.createVerticalGlue());
+        this.add(quitButton.getButton());
 
-        gameOverFrame.add(restartButton.getButton());
-        gameOverFrame.add(scoreArea);
-        gameOverFrame.add(quitButton.getButton());
 
 
-        gameOverFrame.setSize(FRAME_WIDTH, FRAME_HEIGHT);
-        gameOverFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        gameOverFrame.setVisible(true);
+        quitButton.getButton().addActionListener(event -> {
+            try {
+                this.queue.put(new QuitGameMessage());
+            } catch (InterruptedException exception) {
+                //nothing
+            }
+        });
+
+        restartButton.getButton().addActionListener(event -> {
+            try {
+                this.queue.put(new RestartGameScreenMessage());
+            } catch (InterruptedException exception) {
+                //nothing
+            }
+        });
+    }
+    public void updateScore(int score){
+        this.score = score;
     }
 
 //    /**
