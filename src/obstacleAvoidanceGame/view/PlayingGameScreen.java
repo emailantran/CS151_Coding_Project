@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.geom.Ellipse2D;
+import java.awt.geom.*;
 import java.util.concurrent.BlockingQueue;
 
 
@@ -34,7 +34,7 @@ public class PlayingGameScreen extends JPanel {
 	/**
 	 * Constructor setting up the layout of the playing game screen
 	 */
-	public PlayingGameScreen(BlockingQueue<Message> queue, int playerX, int playerY, WallComponent wallComponent) {
+	public PlayingGameScreen(BlockingQueue<Message> queue, int playerX, int playerY, WallComponent wallComponent,int score) {
 		this.queue = queue;
 		this.wallComponent = wallComponent;
 		this.playerX = playerX;
@@ -64,6 +64,7 @@ public class PlayingGameScreen extends JPanel {
 		timer = new Timer(40, ae -> {
 			try {
 				this.queue.put(new UpdateWallMessage());
+				this.queue.put(new CollisionCheckMessage());
 			} catch (InterruptedException exception) {
 				//nothing
 			}
@@ -109,12 +110,11 @@ public class PlayingGameScreen extends JPanel {
 		super.paintComponent(g);
 
 		Graphics2D g2d = (Graphics2D) g;
-		Ellipse2D.Double circle = new Ellipse2D.Double(this.playerX, this.playerY,100,100);
+		Rectangle2D.Double circle = new Rectangle2D.Double(this.playerX, this.playerY,100,100);
 
 		g2d.setColor(Color.yellow);
 		g2d.fill(circle);
 	}
-
 
 
 	/**
@@ -133,9 +133,5 @@ public class PlayingGameScreen extends JPanel {
 		return false;
 	}*/
 
-
-	public int getScore() {
-		return score;
-	}
 }
 

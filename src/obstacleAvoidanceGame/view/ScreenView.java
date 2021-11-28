@@ -37,7 +37,7 @@ public class ScreenView extends JFrame {
     public void startGame(int playerXPos, int playerYPos, int[] x, int[] y, int[] width, int[] height, int gapSize) {
         this.setLayout(new CardLayout());
         wallComponent = new WallComponent(x, y, width, height, gapSize, FRAME_HEIGHT);
-        playingGameScreen = new PlayingGameScreen(this.queue, playerXPos, playerYPos, wallComponent);
+        playingGameScreen = new PlayingGameScreen(this.queue, playerXPos, playerYPos, wallComponent,0);
         this.add(playingGameScreen);
         startScreen.setVisible(false);
         powerUpScreen.setVisible(false);

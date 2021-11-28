@@ -17,7 +17,7 @@ public class Game {
 
         BlockingQueue<Message> queue = new LinkedBlockingQueue<Message>();
 
-        PlayerModel playerModel = new PlayerModel(230,100,100,100);
+        PlayerModel playerModel = new PlayerModel(230,100,100,100,10);
         ArrayList<Wall> walls = new ArrayList<>();
         for (int i = 0; i < 1000; i++) {
             walls.add(new Wall(i * DISTANCE_APART));

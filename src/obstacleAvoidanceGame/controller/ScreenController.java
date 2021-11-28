@@ -25,6 +25,8 @@ public class ScreenController {
     int[] wallsWidth;
     int[] wallsHeight;
 
+    int score = 0;
+
     // constructor that initializes all the view and model classes for the controller to work with
     public ScreenController(BlockingQueue<Message> queue, ScreenView screenView, PlayerModel playerModel, ArrayList<Wall> walls) {
         this.queue = queue;
@@ -76,10 +78,14 @@ public class ScreenController {
             } else if (message.getClass() == Powerup4Message.class) {
                 screenView.activatePowerup4();
             } else if (message.getClass() == MoveUpMessage.class) {
-                playerModel.setyPos(-10);
+                if (playerModel.getyPos() - 20 > 0) {
+                    playerModel.setyPos(-10);
+                }
                 screenView.movePlayer(playerModel.getxPos(), playerModel.getyPos());
             } else if (message.getClass() == MoveDownMessage.class) {
-                playerModel.setyPos(10);
+                if (playerModel.getyPos() + 100 < 1000){
+                    playerModel.setyPos(10);
+                }
                 screenView.movePlayer(playerModel.getxPos(), playerModel.getyPos());
             } else if (message.getClass() == UpdateWallMessage.class) {
 
@@ -93,6 +99,15 @@ public class ScreenController {
                 }
 
                 screenView.updateWalls(wallsX, wallsY, wallsWidth, wallsHeight, walls.get(0).getGAP_SIZE());
+            } else if (message.getClass() == CollisionCheckMessage.class) {
+                for (int i = 0; i < walls.size(); i++) {
+                    if ((walls.get(i).getX() > 230 && walls.get(i).getX() < 330) || (walls.get(i).getX() + 100 > 230 && walls.get(i).getX() + 100 < 331)) {
+                        if (walls.get(i).getHeight() > playerModel.getyPos() - 20 || (walls.get(i).getHeight() + walls.get(i).getGAP_SIZE()) < playerModel.getyPos() + 80) {
+                            screenView.quitGame();
+
+                        }
+                    }
+                }
             }
         }
     }
