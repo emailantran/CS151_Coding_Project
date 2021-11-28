@@ -1,7 +1,5 @@
 package obstacleAvoidanceGame.view;
 
-import obstacleAvoidanceGame.message.*;
-
 import javax.swing.*;
 import java.awt.*;
 
