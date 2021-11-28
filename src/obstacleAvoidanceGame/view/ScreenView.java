@@ -23,6 +23,7 @@ public class ScreenView extends JFrame {
         this.queue = queue;
         this.startScreen = new StartScreen(this.queue);
         this.powerUpScreen = new PowerupScreen(this.queue);
+        this.gameOverScreen = new GameOverScreen(this.queue);
 
         this.setLayout(new CardLayout());
         this.setExtendedState(JFrame.MAXIMIZED_BOTH); // default stretches out to max resolution
@@ -30,6 +31,7 @@ public class ScreenView extends JFrame {
         this.setTitle("Obstacle Avoidance Game"); // change to whatever title we want for the game
         this.add(startScreen);
         this.add(powerUpScreen);
+        this.add(gameOverScreen);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
@@ -41,6 +43,7 @@ public class ScreenView extends JFrame {
         this.add(playingGameScreen);
         startScreen.setVisible(false);
         powerUpScreen.setVisible(false);
+        gameOverScreen.setVisible(false);
         playingGameScreen.setVisible(true);
     }
 
@@ -54,7 +57,8 @@ public class ScreenView extends JFrame {
     }
 
     public void goToGameOverScreen() {
-
+        playingGameScreen.setVisible(false);
+        gameOverScreen.setVisible(true);
     }
 
     public void goToStartGameScreen() {
@@ -90,5 +94,13 @@ public class ScreenView extends JFrame {
     public void updateWalls(int[] x, int[] y, int[] width, int[] height, int gapSize) {
         wallComponent.UpdateWallComponent(x, y, width, height, gapSize, FRAME_HEIGHT);
         wallComponent.repaint();
+    }
+
+    public void updateScore(int score){
+        playingGameScreen.updateScore(score);
+    }
+
+    public void stopTimer(){
+        playingGameScreen.stopTimer();
     }
 }

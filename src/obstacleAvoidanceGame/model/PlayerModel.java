@@ -59,8 +59,8 @@ public class PlayerModel {
         return height;
     }
 
-    public void increaseScore(){
-        score =+ 1;
+    public void setScore(int score){
+        this.score = score;
     }
 
     public int getScore(){

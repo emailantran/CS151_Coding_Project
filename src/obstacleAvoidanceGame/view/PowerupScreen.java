@@ -35,7 +35,6 @@ public class PowerupScreen extends JPanel{
         this.power4Button = new Button("Power 4", Color.GREEN, new Font(Font.SERIF, Font.PLAIN, 75));
         this.power4Button.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
 
-
         quitButton.getButton().addActionListener(event -> {
             try {
                 this.queue.put(new QuitPowerupScreenMessage());
