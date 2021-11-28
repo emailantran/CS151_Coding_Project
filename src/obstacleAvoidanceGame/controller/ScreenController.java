@@ -1,7 +1,5 @@
 package obstacleAvoidanceGame.controller;
 
-import obstacleAvoidanceGame.message.*;
-
 import obstacleAvoidanceGame.model.PlayerModel;
 import obstacleAvoidanceGame.model.Wall;
 import obstacleAvoidanceGame.view.ScreenView;
