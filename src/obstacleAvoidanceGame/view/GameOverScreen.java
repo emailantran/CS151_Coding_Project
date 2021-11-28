@@ -22,7 +22,7 @@ public class GameOverScreen {
         Button restartButton = new Button("Restart", Color.GREEN, new Font(Font.SERIF, Font.PLAIN, 14));
         restartButton.getButton().addActionListener(event -> {
         	gameOverFrame.dispose();
-        	StartScreen ss = new StartScreen();
+        	//StartScreen ss = new StartScreen();
         });
         
         Button quitButton = new Button("Quit", Color.RED, new Font(Font.SERIF, Font.PLAIN, 14));
@@ -59,8 +59,5 @@ public class GameOverScreen {
 //    private void QuitGame() {
 //
 //    }
-    
-    public static void main(String[] args) {
-        GameOverScreen gos = new GameOverScreen();
-    }
+
 }
