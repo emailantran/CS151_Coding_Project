@@ -11,7 +11,7 @@ import java.util.concurrent.BlockingQueue;
 
 
 /**
- * PlayingGame Screen will allow the player to play the game. The screen will contain the playing area, a quit button, and the score of the player.
+ * PlayingGame Screen will allow the player to play the game. The screen will contain the playing area, an instruction text box, and the score of the player.
  * @author blues
  *
  */
@@ -19,6 +19,11 @@ public class PlayingGameScreen extends JPanel {
 
 	BlockingQueue<Message> queue;
 
+	/**
+	 * timer: timer used to start and end game
+	 * 
+	 * scoreTimer: updates score over period of time
+	 */
 	Timer timer;
 	Timer scoreTimer;
 
@@ -53,7 +58,6 @@ public class PlayingGameScreen extends JPanel {
 		/**
 		 * text display for score
 		 */
-		//JTextPane scoreArea = new JTextPane();
 		scoreArea.setText("Score: " + score);
 		scoreArea.setEditable(false);
 		scoreArea.setAlignmentX(FRAME_WIDTH);
@@ -105,6 +109,9 @@ public class PlayingGameScreen extends JPanel {
 			}
 		});
 
+		/**
+		 * adjusting layout of screen
+		 */
 		this.add(scoreArea, BorderLayout.NORTH);
 		this.add(instructions, BorderLayout.SOUTH);
 		this.setFocusable(true);
@@ -112,25 +119,44 @@ public class PlayingGameScreen extends JPanel {
 		this.setPreferredSize(new Dimension(FRAME_WIDTH, FRAME_HEIGHT));
 	}
 
+	/**
+	 * updates player position
+	 * @param x
+	 * @param y
+	 */
 	public void updatePlayer(int x, int y) {
 		this.playerX = x;
 		this.playerY = y;
 	}
 
+	/**
+	 * updates score in game
+	 * @param score
+	 */
 	public void updateScore(int score){
 		this.score = score;
 		scoreArea.setText("Score: " + score);
 	}
 
+	/**
+	 * stops timers to stop game
+	 */
 	public void stopTimer(){
 		timer.stop();
 		scoreTimer.stop();
 	}
 	
+	/**
+	 * returns score of player
+	 * @return score
+	 */
 	public int getScore() {
 		return this.score;
 	}
 
+	/**
+	 * draws player model, repainted every time key pressed action listener is called
+	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 

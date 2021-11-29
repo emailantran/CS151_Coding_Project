@@ -71,24 +71,13 @@ public class GameOverScreen extends JPanel{
         });
     }
     
-    
+    /**
+     * updates score text box on game over screen
+     * @param score
+     */
     public void updateScore(int score){
         this.score = score;
         scoreArea.setText("Score: " + score);
     }
-
-//    /**
-//     * Method stub for restarting the game, will use the Restart Button to do so
-//     */
-//    private void RestartGame() {
-//
-//    }
-//
-//    /**
-//     * Method stub for quitting the game, will use the Quit Button to do so
-//     */
-//    private void QuitGame() {
-//
-//    }
 
 }
