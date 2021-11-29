@@ -1,5 +1,8 @@
 package obstacleAvoidanceGame.model;
 
+/*
+ * Player model that will be controlled by player
+ */
 public class PlayerModel {
 	private int xPos;
     private int yPos;
@@ -71,11 +74,18 @@ public class PlayerModel {
         return height;
     }
 
+    /**
+     * sets score to specified amount
+     */
     public void setScore(int score){
         this.score = score;
     }
-
+    
+    /**
+     * 
+     * @return score
+     */
     public int getScore(){
         return score;
     }
-    }
+}

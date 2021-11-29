@@ -3,7 +3,11 @@ package obstacleAvoidanceGame.view;
 import javax.swing.*;
 import java.awt.*;
 
-
+/**
+ * Wall component draws shape of wall from the values kept in wall class
+ * @author blues
+ *
+ */
 public class WallComponent extends JComponent {
 	int[] x;
 	int[] y;
@@ -12,6 +16,15 @@ public class WallComponent extends JComponent {
 	int gapSize;
 	int frameHeight;
 
+	/**
+	 * constructor to initialize variables
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @param gapSize
+	 * @param frameHeight
+	 */
 	public WallComponent(int[] x, int[] y, int[] width, int[] height, int gapSize, int frameHeight) {
 		this.x = x;
 		this.y = y;
@@ -21,6 +34,15 @@ public class WallComponent extends JComponent {
 		this.frameHeight = frameHeight;
 	}
 
+	/**
+	 * reinitializes variables when wall is moved
+	 * @param x
+	 * @param y
+	 * @param width
+	 * @param height
+	 * @param gapSize
+	 * @param frameHeight
+	 */
 	public void UpdateWallComponent(int[] x, int[] y, int[] width, int[] height, int gapSize, int frameHeight) {
 		this.x = x;
 		this.y = y;
@@ -30,6 +52,9 @@ public class WallComponent extends JComponent {
 		this.frameHeight = frameHeight;
 	}
 
+	/**
+	 * paints shape of wall
+	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2 = (Graphics2D)g;

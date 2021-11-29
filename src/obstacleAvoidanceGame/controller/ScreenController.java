@@ -12,7 +12,9 @@ import java.util.concurrent.BlockingQueue;
 /**
  *  This class will act as the Controller class between the screens (view) and the game logic (model)
  *
- *  WORK IN PROGRESS CLASS... NEEDS REWORK OF SCREEN CLASSES
+ *  Aggregates queue, playerModel, walls in a ArrayList, and ScreenView
+ *  	-reads messages from queue to proccess and change ScreenView
+ *  	-playerModel and walls used to display and check for collision between the two
  */
 public class ScreenController {
     BlockingQueue<Message> queue;
@@ -20,14 +22,22 @@ public class ScreenController {
     ArrayList<Wall> walls;
     ScreenView screenView;
 
+    /*
+     * Arrays of dimensions of walls to check with player's position
+     */
     int[] wallsX;
     int[] wallsY;
     int[] wallsWidth;
     int[] wallsHeight;
 
+    /*
+     * set score to 0 at start
+     */
     int score = 0;
 
-    // constructor that initializes all the view and model classes for the controller to work with
+    /*
+     *  constructor that initializes all the view and model classes for the controller to work with
+     */
     public ScreenController(BlockingQueue<Message> queue, ScreenView screenView, PlayerModel playerModel, ArrayList<Wall> walls) {
         this.queue = queue;
         this.playerModel = playerModel;
@@ -40,6 +50,9 @@ public class ScreenController {
         this.wallsHeight = new int[walls.size()];
     }
 
+    /*
+     * mainLoop to initialize game
+     */
     public void mainLoop() {
 
         while (screenView.isDisplayable()) {
@@ -123,6 +136,9 @@ public class ScreenController {
         }
     }
     
+    /*
+     * resets walls in order to reset dimensions and positions
+     */
     private void resetWalls() {
     	walls.removeAll(walls);
     	for (int i = 0; i < 1000; i++) {
