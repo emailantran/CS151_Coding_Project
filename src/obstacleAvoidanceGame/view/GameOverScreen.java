@@ -42,6 +42,7 @@ public class GameOverScreen extends JPanel{
         this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 
         scoreArea = new JTextPane();
+        scoreArea.setFont(new Font(Font.DIALOG, Font.BOLD, 40));
         scoreArea.setText("Score: " + score);
         scoreArea.setEditable(false);
         scoreArea.setAlignmentX(Component.CENTER_ALIGNMENT);
