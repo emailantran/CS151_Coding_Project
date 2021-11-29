@@ -19,6 +19,7 @@ public class GameOverScreen extends JPanel{
 
     Button restartButton;
     Button quitButton;
+    JTextPane scoreArea;
 
     private int score;
 
@@ -40,7 +41,7 @@ public class GameOverScreen extends JPanel{
 
         this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 
-        JTextPane scoreArea = new JTextPane();
+        scoreArea = new JTextPane();
         scoreArea.setText("Score: " + score);
         scoreArea.setEditable(false);
         scoreArea.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -69,8 +70,11 @@ public class GameOverScreen extends JPanel{
             }
         });
     }
+    
+    
     public void updateScore(int score){
         this.score = score;
+        scoreArea.setText("Score: " + score);
     }
 
 //    /**

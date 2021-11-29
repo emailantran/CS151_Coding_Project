@@ -66,6 +66,7 @@ public class ScreenController {
             } else if (message.getClass() == QuitGameMessage.class) {
                 screenView.quitGame();
             } else if (message.getClass() == RestartGameScreenMessage.class) {
+            	resetWalls();
                 screenView.goToStartGameScreen();
             } else if (message.getClass() == QuitPowerupScreenMessage.class) {
                 screenView.returnToStartScreen();
@@ -116,8 +117,16 @@ public class ScreenController {
                     }
                     playerModel.setScore(count);
                     screenView.updateScore(playerModel.getScore());
+                    screenView.updateGameOverScore(playerModel.getScore());
                 }
             }
+        }
+    }
+    
+    private void resetWalls() {
+    	walls.removeAll(walls);
+    	for (int i = 0; i < 1000; i++) {
+            walls.add(new Wall(i * 600));
         }
     }
 }

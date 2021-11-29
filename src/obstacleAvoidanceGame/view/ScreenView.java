@@ -15,7 +15,9 @@ public class ScreenView extends JFrame {
 
     WallComponent wallComponent;
 
-    JPanel gameOverScreen;
+    //JPanel gameOverScreen;
+    
+    GameOverScreen gameOverScreen;
 
     final int FRAME_HEIGHT = 1080;
 
@@ -62,7 +64,10 @@ public class ScreenView extends JFrame {
     }
 
     public void goToStartGameScreen() {
-
+    	startScreen.setVisible(true);
+    	powerUpScreen.setVisible(false);
+    	playingGameScreen.setVisible(false);
+    	gameOverScreen.setVisible(false);
     }
 
     public void returnToStartScreen() {
@@ -98,6 +103,10 @@ public class ScreenView extends JFrame {
 
     public void updateScore(int score){
         playingGameScreen.updateScore(score);
+    }
+    
+    public void updateGameOverScore(int score) {
+    	gameOverScreen.updateScore(score);
     }
 
     public void stopTimer(){
