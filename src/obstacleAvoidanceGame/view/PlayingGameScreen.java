@@ -126,6 +126,10 @@ public class PlayingGameScreen extends JPanel {
 		timer.stop();
 		scoreTimer.stop();
 	}
+	
+	public int getScore() {
+		return this.score;
+	}
 
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
