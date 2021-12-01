@@ -15,7 +15,7 @@ public class ScreenView extends JFrame {
     BlockingQueue<Message> queue;
 
     JPanel startScreen;
-    JPanel powerUpScreen;
+    JPanel difficultyScreen;
     PlayingGameScreen playingGameScreen;
     GameOverScreen gameOverScreen;
 
@@ -30,14 +30,14 @@ public class ScreenView extends JFrame {
     public ScreenView(BlockingQueue<Message> queue) {
         this.queue = queue;
         this.startScreen = new StartScreen(this.queue);
-        this.powerUpScreen = new PowerupScreen(this.queue);
+        this.difficultyScreen = new DifficultyScreen(this.queue);
         this.gameOverScreen = new GameOverScreen(this.queue);
 
         this.setLayout(new CardLayout());
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setTitle("Obstacle Avoidance Game"); // change to whatever title we want for the game
         this.add(startScreen);
-        this.add(powerUpScreen);
+        this.add(difficultyScreen);
         this.add(gameOverScreen);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -59,7 +59,7 @@ public class ScreenView extends JFrame {
         playingGameScreen = new PlayingGameScreen(this.queue, playerXPos, playerYPos, wallComponent,0);
         this.add(playingGameScreen);
         startScreen.setVisible(false);
-        powerUpScreen.setVisible(false);
+        difficultyScreen.setVisible(false);
         gameOverScreen.setVisible(false);
         playingGameScreen.setVisible(true);
     }
@@ -76,7 +76,7 @@ public class ScreenView extends JFrame {
      */
     public void goToPowerupScreen() {
         startScreen.setVisible(false);
-        powerUpScreen.setVisible(true);
+        difficultyScreen.setVisible(true);
     }
 
     /**
@@ -92,7 +92,7 @@ public class ScreenView extends JFrame {
      */
     public void goToStartGameScreen() {
     	startScreen.setVisible(true);
-    	powerUpScreen.setVisible(false);
+    	difficultyScreen.setVisible(false);
     	playingGameScreen.setVisible(false);
     	gameOverScreen.setVisible(false);
     }
@@ -101,7 +101,7 @@ public class ScreenView extends JFrame {
      * sets up start screen layout after game over
      */
     public void returnToStartScreen() {
-        powerUpScreen.setVisible(false);
+    	difficultyScreen.setVisible(false);
         startScreen.setVisible(true);
     }
 
@@ -114,10 +114,6 @@ public class ScreenView extends JFrame {
     }
 
     public void activatePowerup3() {
-        returnToStartScreen();
-    }
-
-    public void activatePowerup4() {
         returnToStartScreen();
     }
 

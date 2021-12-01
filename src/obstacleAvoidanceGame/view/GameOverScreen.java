@@ -3,7 +3,7 @@ package obstacleAvoidanceGame.view;
 import obstacleAvoidanceGame.Button;
 import obstacleAvoidanceGame.message.Message;
 import obstacleAvoidanceGame.message.QuitGameMessage;
-import obstacleAvoidanceGame.message.QuitPowerupScreenMessage;
+import obstacleAvoidanceGame.message.QuitDifficultyScreenMessage;
 import obstacleAvoidanceGame.message.RestartGameScreenMessage;
 
 import java.awt.*;

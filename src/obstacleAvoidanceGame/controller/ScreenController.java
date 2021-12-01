@@ -1,5 +1,6 @@
 package obstacleAvoidanceGame.controller;
 
+import obstacleAvoidanceGame.DifficultyLevel;
 import obstacleAvoidanceGame.message.*;
 
 import obstacleAvoidanceGame.model.PlayerModel;
@@ -21,6 +22,8 @@ public class ScreenController {
     PlayerModel playerModel;
     ArrayList<Wall> walls;
     ScreenView screenView;
+    private DifficultyLevel difficulty = DifficultyLevel.NORMAL;
+
 
     /*
      * Arrays of dimensions of walls to check with player's position
@@ -72,7 +75,7 @@ public class ScreenController {
                 }
 
                 screenView.startGame(playerModel.getxPos(), playerModel.getyPos(), wallsX, wallsY, wallsWidth, wallsHeight, walls.get(0).getGAP_SIZE());
-            } else if (message.getClass() == PowerupScreenMessage.class) {
+            } else if (message.getClass() == DifficultyScreenMessage.class) {
                 screenView.goToPowerupScreen();
             } else if (message.getClass() == GameOverScreenMessage.class) {
                 screenView.goToGameOverScreen();
@@ -81,16 +84,20 @@ public class ScreenController {
             } else if (message.getClass() == RestartGameScreenMessage.class) {
             	resetWalls();
                 screenView.goToStartGameScreen();
-            } else if (message.getClass() == QuitPowerupScreenMessage.class) {
+            } else if (message.getClass() == QuitDifficultyScreenMessage.class) {
                 screenView.returnToStartScreen();
-            } else if (message.getClass() == Powerup1Message.class) {
+            } else if (message.getClass() == EasyDifficultyMessage.class) {
+            	setDifficulty(DifficultyLevel.EASY);
+            	resetWalls();
                 screenView.activatePowerup1();
-            } else if (message.getClass() == Powerup2Message.class) {
+            } else if (message.getClass() == NormalDifficultyMessage.class) {
+            	setDifficulty(DifficultyLevel.NORMAL);
+            	resetWalls();
                 screenView.activatePowerup2();
-            } else if (message.getClass() == Powerup3Message.class) {
+            } else if (message.getClass() == HardDifficultyMessage.class) {
+            	setDifficulty(DifficultyLevel.HARD);
+            	resetWalls();
                 screenView.activatePowerup3();
-            } else if (message.getClass() == Powerup4Message.class) {
-                screenView.activatePowerup4();
             } else if (message.getClass() == MoveUpMessage.class) {
                 if (playerModel.getyPos() - 20 > 0) {
                     playerModel.setyPos(-10);
@@ -136,6 +143,22 @@ public class ScreenController {
         }
     }
     
+    /**
+     * returns the current difficulty of the game
+     * @return difficulty
+     */
+    private DifficultyLevel getDifficulty() {
+		return difficulty;
+	}
+	
+    /**
+     * sets the difficulty of the game
+     * @param difficulty
+     */
+	private void setDifficulty(DifficultyLevel difficulty) {
+		this.difficulty = difficulty;
+	}
+    
     /*
      * resets walls in order to reset dimensions and positions
      */
@@ -144,5 +167,14 @@ public class ScreenController {
     	for (int i = 0; i < 1000; i++) {
             walls.add(new Wall(i * 600));
         }
+    	for (Wall w: walls) {
+    		if (getDifficulty() == DifficultyLevel.NORMAL) {
+    			w.setSpeed(4);
+    		} else if (getDifficulty() == DifficultyLevel.EASY) {
+    			w.setSpeed(2);
+    		} else if (getDifficulty() == DifficultyLevel.HARD) {
+    			w.setSpeed(8);
+    		}
+    	}
     }
 }

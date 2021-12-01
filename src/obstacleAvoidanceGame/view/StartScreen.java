@@ -18,7 +18,7 @@ public class StartScreen extends JPanel {
 	BlockingQueue<Message> queue;
 
 	Button startButton;
-	Button powerUpButton;
+	Button difficultyButton;
 	Button quitButton;
 
 	/**
@@ -30,9 +30,9 @@ public class StartScreen extends JPanel {
 		this.startButton = new Button("   Start   ", Color.GREEN, new Font(Font.SERIF, Font.PLAIN, 150));
 		this.startButton.getButton().setPreferredSize(new Dimension(50, 200));
 		this.startButton.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
-		this.powerUpButton = new Button("Powerup", Color.CYAN, new Font(Font.SERIF, Font.PLAIN, 150));
-		this.powerUpButton.getButton().setPreferredSize(new Dimension(50, 200));
-		this.powerUpButton.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
+		this.difficultyButton = new Button("Difficulty", Color.CYAN, new Font(Font.SERIF, Font.PLAIN, 150));
+		this.difficultyButton.getButton().setPreferredSize(new Dimension(50, 200));
+		this.difficultyButton.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
 		this.quitButton = new Button("  Quit  ", Color.RED, new Font(Font.SERIF, Font.PLAIN, 150));
 		this.quitButton.getButton().setPreferredSize(new Dimension(50, 200));
 		this.quitButton.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -54,9 +54,9 @@ public class StartScreen extends JPanel {
 			}
 		});
 
-		powerUpButton.getButton().addActionListener(event -> {
+		difficultyButton.getButton().addActionListener(event -> {
 			try {
-				this.queue.put(new PowerupScreenMessage());
+				this.queue.put(new DifficultyScreenMessage());
 			} catch (InterruptedException exception) {
 				//nothing
 			}
@@ -64,7 +64,7 @@ public class StartScreen extends JPanel {
 
 
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-		this.add(powerUpButton.getButton());
+		this.add(difficultyButton.getButton());
 		this.add(Box.createVerticalGlue());
 		this.add(startButton.getButton());
 		this.add(Box.createVerticalGlue());
