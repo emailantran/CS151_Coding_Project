@@ -2,6 +2,8 @@ package obstacleAvoidanceGame.model;
 
 import java.util.Random;
 
+import obstacleAvoidanceGame.DifficultyLevel;
+
 /**
  * Holds dimensions and characteristics of wall obstacles
  * @author blues
@@ -13,7 +15,7 @@ public class Wall {
 	private int width;
 	private int height;
 	private int speed;
-
+	
 	/**
 	 * Constant variables used to determine frame size and gaps in walls
 	 */
@@ -99,4 +101,5 @@ public class Wall {
 	public void move() {
 		x -= speed;
 	}
+	
 }
