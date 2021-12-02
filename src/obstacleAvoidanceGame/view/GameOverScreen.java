@@ -3,12 +3,11 @@ package obstacleAvoidanceGame.view;
 import obstacleAvoidanceGame.Button;
 import obstacleAvoidanceGame.message.Message;
 import obstacleAvoidanceGame.message.QuitGameMessage;
-import obstacleAvoidanceGame.message.QuitDifficultyScreenMessage;
 import obstacleAvoidanceGame.message.RestartGameScreenMessage;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.concurrent.BlockingQueue;
-import javax.swing.*;
 
 /**
  *  This class is for the screen that the user sees when they lose, which lets them retry or quit the game.
@@ -19,7 +18,7 @@ public class GameOverScreen extends JPanel{
 
     Button restartButton;
     Button quitButton;
-    JTextPane scoreArea;
+    JTextField scoreArea;
 
     private int score;
 
@@ -31,21 +30,22 @@ public class GameOverScreen extends JPanel{
         this.queue = queue;
         this.score = 0;
 
-        this.restartButton = new Button("Restart", Color.GREEN, new Font(Font.SERIF, Font.PLAIN, 14));
+        this.restartButton = new Button("Restart", Color.GREEN, new Font(Font.SERIF, Font.PLAIN, 200));
         this.restartButton.getButton().setPreferredSize(new Dimension(50, 200));
         this.restartButton.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
-        this.quitButton = new Button("Quit", Color.RED, new Font(Font.SERIF, Font.PLAIN, 14));
+        this.quitButton = new Button("Quit", Color.RED, new Font(Font.SERIF, Font.PLAIN, 200));
         this.quitButton.getButton().setPreferredSize(new Dimension(50, 200));
         this.quitButton.getButton().setAlignmentX(Component.CENTER_ALIGNMENT);
 
 
         this.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
 
-        scoreArea = new JTextPane();
+        scoreArea = new JTextField();
         scoreArea.setFont(new Font(Font.DIALOG, Font.BOLD, 40));
         scoreArea.setText("Score: " + score);
         scoreArea.setEditable(false);
         scoreArea.setAlignmentX(Component.CENTER_ALIGNMENT);
+        scoreArea.setHorizontalAlignment(JTextField.CENTER);
 
         this.add(restartButton.getButton());
         this.add(Box.createVerticalGlue());
